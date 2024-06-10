@@ -1,5 +1,6 @@
 package com.evansdev.book.book;
 
+import com.evansdev.book.file.FileUtils;
 import com.evansdev.book.history.BookTransactionHistory;
 import org.springframework.stereotype.Service;
 
@@ -27,8 +28,7 @@ public class BookMapper {
                 .shareable(book.isShareable())
                 .archived(book.isArchived())
                 .owner(book.getOwner().fullName())
-                // todo implement this later
-                // .cover()
+                .cover(FileUtils.readFileFromLocation(book.getBookCover()))
                 .build();
     }
 
